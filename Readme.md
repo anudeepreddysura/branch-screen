@@ -13,12 +13,14 @@ Sample Rest API to query github and return the custom user summary as expected.
 - Intellij > File > New > Project from Existing Sources
 - Import as Maven Project
 - Run the Main Class (ProjectApplication)
+- Make a GET request to http://localhost:8000/github/{username}
 
 ##### Maven
 - Clone the project from git using git clone <link>
 - Extract the project
 - From the project root director run mvn clean install package
 - Run java -jar target/<latest-jar-file>
+- Make a GET request to http://localhost:8000/github/{username}
 
 ### Architecture
 The code is organized in a standard msc (model, service, controller) format so all the relevant details for a particular level are stored together. 
@@ -33,5 +35,6 @@ Similarly, we could add multiple clients and exceptions and keep them closed kni
   - Rest Template: Rest Template was used to keep things simple as we do not have parallel async calls. Otherwise, we could use HttpClient for making parallel async calls.
 - Logging: Used SLF4J to log info & errors for visibility.
 - Actuator: To monitor metrics and status of the service.
+- Testing: Junit + Mockito + Maven Surefire Plugin to automatically run unit tests with every build.
 - Didn't use Docker to bundle up the service given the time constraints.
 
